@@ -30,7 +30,7 @@ ENV CONDA_AUTO_UPDATE_CONDA=false
 
 RUN conda install -y ipython
 RUN conda install -c menpo opencv
-RUN pip install ninja yacs cython matplotlib tqdm scipy shapely networkx pandas scikit-learn pillow
+RUN pip install ninja yacs cython matplotlib tqdm scipy shapely networkx pandas scikit-learn pillow==6.2.2
 
 # Install PyTorch 1.0 Nightly and OpenCV
 RUN conda install -y pytorch=1.0 cudatoolkit=9.0 -c pytorch \
