@@ -1,0 +1,15 @@
+FROM 10.11.3.8:5000/bitahub/pytorch:1.1-py2
+MAINTAINER fangshancheng <fangshancheng@iie.ac.cn>
+RUN apt update && apt install -y libsm6 libxext6 libxrender-dev && \
+    conda config --add channels https://mirrors.ustc.edu.cn/anaconda/pkgs/free/ && \
+    conda config --add channels https://mirrors.ustc.edu.cn/anaconda/pkgs/main/ && \
+    conda config --set show_channel_urls yes && \
+    pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/ && \
+    pip install lmdb editdistance tensorboardX && \
+    conda install -y opencv && \
+    rm -rf /tmp/* && \
+    rm -rf ~/.cache && \
+    conda clean -y -a
+EXPOSE 8888
+ENV LANG C.UTF-8
+ENV LC_ALL C.UTF-8
