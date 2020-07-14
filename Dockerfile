@@ -39,26 +39,9 @@ RUN conda install -y pytorch=1.0 cudatoolkit=9.0 -c pytorch \
 RUN conda install -y torchvision=0.2 -c pytorch \
  && conda clean -ya
 
-
-
-# Install TorchVision master
-#RUN git clone https://github.com/pytorch/vision.git \
-#&& cd vision \
-# && python setup.py install
-
-# install pycocotools
 RUN git clone https://github.com/cocodataset/cocoapi.git \
  && cd cocoapi/PythonAPI \
  && python setup.py build_ext install
 
-#install bdn
-# cd /code \
-# && RUN git clone https://github.com/Yuliang-Liu/Box_Discretization_Network.git \
-# && cd Box_Discretization_Network
-# && python setup.py build develop
-# install PyTorch Detection
-#RUN git clone https://github.com/facebookresearch/maskrcnn-benchmark.git \
-# && cd maskrcnn-benchmark \
-# && python setup.py build develop
 
 WORKDIR /code/Box_Discretization_Network
