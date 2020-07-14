@@ -12,20 +12,22 @@ RUN apt-get upgrade -y\
  && apt-get install -y libglib2.0-0 libsm6 libxext6 libxrender-dev \
  && apt-get install unzip
 
+RUN rm /miniconda.sh
+
 # Install Miniconda
-RUN curl -so /miniconda.sh https://repo.continuum.io/miniconda/Miniconda3-4.6.14-Linux-x86_64.sh \
- && chmod +x /miniconda.sh \
- && /miniconda.sh -b -p /miniconda \
- && rm /miniconda.sh
+RUN curl -so /miniconda3.sh https://repo.continuum.io/miniconda/Miniconda3-4.6.14-Linux-x86_64.sh \
+ && chmod +x /miniconda3.sh \
+ && /miniconda3.sh -b -p /miniconda3 \
+ && rm /miniconda3.sh
 
 # Create a Python 3.6 environment
-ENV PATH=/miniconda/bin:$PATH
-RUN /miniconda/bin/conda install -y conda-build \
- && /miniconda/bin/conda create -y --name mb python=3.6.7 \
- && /miniconda/bin/conda clean -ya
+ENV PATH=/miniconda3/bin:$PATH
+RUN /miniconda3/bin/conda install -y conda-build \
+ && /miniconda3/bin/conda create -y --name mb python=3.6.7 \
+ && /miniconda3/bin/conda clean -ya
 
 ENV CONDA_DEFAULT_ENV=mb
-ENV CONDA_PREFIX=/miniconda/envs/$CONDA_DEFAULT_ENV
+ENV CONDA_PREFIX=/miniconda3/envs/$CONDA_DEFAULT_ENV
 ENV PATH=$CONDA_PREFIX/bin:$PATH
 ENV CONDA_AUTO_UPDATE_CONDA=false
 
