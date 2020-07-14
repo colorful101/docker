@@ -15,7 +15,7 @@ RUN apt-get upgrade -y\
 # RUN rm /miniconda.sh
 
 # Install Miniconda
-RUN curl -so /miniconda3.sh https://repo.continuum.io/miniconda/Miniconda3-4.6.14-Linux-x86_64.sh \
+RUN wget -O /miniconda3.sh https://repo.continuum.io/miniconda/Miniconda3-4.6.14-Linux-x86_64.sh \
  && chmod +x /miniconda3.sh \
  && /miniconda3.sh -b -p /miniconda3 \
  && rm /miniconda3.sh
