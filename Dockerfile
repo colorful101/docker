@@ -6,8 +6,7 @@ FROM nvidia/cuda:${CUDA}-cudnn${CUDNN}-devel-ubuntu16.04
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 
 # install basics
-RUN apt-get upgrade -y\
- && apt-get update -y \
+RUN apt-get update -y \
  && apt-get install -y apt-utils git curl ca-certificates bzip2 cmake tree htop bmon iotop g++ \
  && apt-get install -y libglib2.0-0 libsm6 libxext6 libxrender-dev
 
@@ -18,7 +17,7 @@ RUN curl -so /miniconda3.sh https://repo.continuum.io/miniconda/Miniconda3-4.6.1
  && chmod +x /miniconda3.sh \
  && /miniconda3.sh -b -p /miniconda3 \
  && rm /miniconda3.sh
-
+RUN ls
 # Create a Python 3.6 environment
 ENV PATH=/miniconda3/bin:$PATH
 RUN echo $PATH
