@@ -9,19 +9,19 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
 RUN apt-get upgrade -y\
  && apt-get update -y \
  && apt-get install -y apt-utils git curl ca-certificates bzip2 cmake tree htop bmon iotop g++ \
- && apt-get install -y libglib2.0-0 libsm6 libxext6 libxrender-dev \
- && apt-get install unzip
+ && apt-get install -y libglib2.0-0 libsm6 libxext6 libxrender-dev
 
 # RUN rm /miniconda.sh
 
 # Install Miniconda
-RUN wget -O /miniconda3.sh https://repo.continuum.io/miniconda/Miniconda3-4.6.14-Linux-x86_64.sh \
+RUN curl -so /miniconda3.sh https://repo.continuum.io/miniconda/Miniconda3-4.6.14-Linux-x86_64.sh \
  && chmod +x /miniconda3.sh \
  && /miniconda3.sh -b -p /miniconda3 \
  && rm /miniconda3.sh
 
 # Create a Python 3.6 environment
 ENV PATH=/miniconda3/bin:$PATH
+RUN echo $PATH
 RUN /miniconda3/bin/conda install -y conda-build \
  && /miniconda3/bin/conda create -y --name mb python=3.6.7 \
  && /miniconda3/bin/conda clean -ya
