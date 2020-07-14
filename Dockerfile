@@ -6,7 +6,8 @@ FROM nvidia/cuda:${CUDA}-cudnn${CUDNN}-devel-ubuntu16.04
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 
 # install basics
-RUN apt-get update -y \
+RUN apt-get upgrade -y\
+ && apt-get update -y \
  && apt-get install -y apt-utils git curl ca-certificates bzip2 cmake tree htop bmon iotop g++ \
  && apt-get install -y libglib2.0-0 libsm6 libxext6 libxrender-dev \
  && apt-get install unzip
