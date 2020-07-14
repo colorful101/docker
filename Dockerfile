@@ -17,7 +17,7 @@ RUN curl -so /miniconda3.sh https://repo.continuum.io/miniconda/Miniconda3-4.6.1
  && chmod +x /miniconda3.sh \
  && /miniconda3.sh -b -p /miniconda3 \
  && rm /miniconda3.sh
-RUN cd/ && ls
+RUN cd / && ls
 # Create a Python 3.6 environment
 ENV PATH=/miniconda3/bin:$PATH
 RUN echo $PATH
