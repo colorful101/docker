@@ -13,14 +13,14 @@ RUN apt-get upgrade -y\
  && apt-get install unzip
 
 # Install Miniconda
-RUN curl -so /miniconda.sh https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh \
+RUN curl -so /miniconda.sh https://repo.continuum.io/miniconda/Miniconda3-4.6.14-Linux-x86_64.sh \
  && chmod +x /miniconda.sh \
  && /miniconda.sh -b -p /miniconda \
  && rm /miniconda.sh
 
 # Create a Python 3.6 environment
-RUN PATH=/miniconda/bin:$PATH\
- && /miniconda/bin/conda install -y conda-build \
+ENV PATH=/miniconda/bin:$PATH
+RUN /miniconda/bin/conda install -y conda-build \
  && /miniconda/bin/conda create -y --name mb python=3.6.7 \
  && /miniconda/bin/conda clean -ya
 
