@@ -12,7 +12,7 @@ RUN apt-get upgrade -y\
  && apt-get install -y libglib2.0-0 libsm6 libxext6 libxrender-dev \
  && apt-get install unzip
 
-RUN rm /miniconda.sh
+# RUN rm /miniconda.sh
 
 # Install Miniconda
 RUN curl -so /miniconda3.sh https://repo.continuum.io/miniconda/Miniconda3-4.6.14-Linux-x86_64.sh \
