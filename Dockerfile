@@ -18,7 +18,6 @@ RUN curl -so /miniconda.sh https://repo.continuum.io/miniconda/Miniconda3-latest
  && rm /miniconda.sh
 
 ENV PATH=/miniconda/bin:$PATH
-
 # Create a Python 3.6 environment
 RUN /miniconda/bin/conda install -y conda-build \
  && /miniconda/bin/conda create -y --name mb python=3.6.7 \
