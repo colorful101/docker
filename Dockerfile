@@ -110,7 +110,7 @@ RUN conda clean -y --all
 # ==================================================================
 # config & cleanup
 # ------------------------------------------------------------------
-    ldconfig && \
+RUN ldconfig && \
     apt-get clean && \
     apt-get autoremove && \
     rm -rf /var/lib/apt/lists/* /tmp/* ~/*
