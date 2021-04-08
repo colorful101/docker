@@ -89,18 +89,18 @@ RUN $CONDA_INSTALL \
         seaborn \
         jupyterlab
 
-RUN git clone https://github.com/cocodataset/cocoapi.git \
+RUN $GIT_CLONE https://github.com/cocodataset/cocoapi.git \
  && cd cocoapi/PythonAPI \
  && python setup.py build_ext install \
  && cd ../.. && rm -rf cocoapi
 
-RUN git clone https://github.com/NVIDIA/apex \
+RUN $GIT_CLONE https://github.com/NVIDIA/apex \
  && git checkout f3a960f80244cf9e80558ab30f7f7e8cbf03c0a0 \
  && cd apex \
  && pip install -v --no-cache-dir --global-option="--cpp_ext" --global-option="--cuda_ext" ./ \
  && cd .. && rm -rf apex
 
-RUN git clone https://github.com/mapillary/inplace_abn.git \
+RUN $GIT_CLONE https://github.com/mapillary/inplace_abn.git \
  && cd inplace_abn \
  && python setup.py install \
  && cd .. && rm -rf inplace_abn
