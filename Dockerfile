@@ -45,12 +45,12 @@ RUN git clone https://github.com/cocodataset/cocoapi.git \
  && cd cocoapi/PythonAPI \
  && python setup.py build_ext install
 
-RUN git clone https://github.com/NVIDIA/apex
- && cd apex
+RUN git clone https://github.com/NVIDIA/apex \
+ && cd apex \
  && pip install -v --no-cache-dir --global-option="--cpp_ext" --global-option="--cuda_ext" ./
 
-RUN git clone https://github.com/mapillary/inplace_abn.git
- && cd inplace_abn
+RUN git clone https://github.com/mapillary/inplace_abn.git \
+ && cd inplace_abn \
  && python setup.py install
 
 WORKDIR /code
