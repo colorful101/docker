@@ -67,8 +67,6 @@ ENV CONDA_AUTO_UPDATE_CONDA=false
 # conda
 # ------------------------------------------------------------------
 RUN $CONDA_INSTALL \
-        python = 3.7 && \
-    $CONDA_INSTALL \
         pytorch=1.1 cudatoolkit=9.0 -c pytorch && \
     $CONDA_INSTALL \
         ipython \
