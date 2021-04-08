@@ -2,7 +2,7 @@ ARG CUDA="9.0"
 ARG CUDNN="7"
 
 FROM nvidia/cuda:${CUDA}-cudnn${CUDNN}-devel-ubuntu16.04
-ENV PATH /opt/conda/bin:$PATH
+ENV PATH=/opt/conda/bin:$PATH
 ENV LC_ALL=C
 ENV TZ=Asia/Shanghai
 
