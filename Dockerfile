@@ -22,7 +22,7 @@ RUN cd / && ls
 ENV PATH=/miniconda3/bin:$PATH
 RUN echo $PATH
 RUN /miniconda3/bin/conda install -y conda-build \
- && /miniconda3/bin/conda create -y --name mb python=3.6.7 \
+ && /miniconda3/bin/conda create -y --name mb python=3.7.0 \
  && /miniconda3/bin/conda clean -ya
 
 ENV CONDA_DEFAULT_ENV=mb
@@ -36,14 +36,21 @@ RUN pip install ninja yacs cython matplotlib tqdm scipy shapely networkx pandas 
 RUN pip install jupyterlab
 RUN conda install pillow=5.2.0
 # Install PyTorch 1.0 Nightly and OpenCV
-RUN conda install -y pytorch=1.0 cudatoolkit=9.0 -c pytorch \
+RUN conda install -y pytorch=1.1 cudatoolkit=9.0 -c pytorch \
  && conda clean -ya
-RUN conda install -y torchvision=0.2 -c pytorch \
+RUN conda install -y torchvision=0.3.0 -c pytorch \
  && conda clean -ya
 
 RUN git clone https://github.com/cocodataset/cocoapi.git \
  && cd cocoapi/PythonAPI \
  && python setup.py build_ext install
 
+RUN git clone https://github.com/NVIDIA/apex
+ && cd apex
+ && pip install -v --no-cache-dir --global-option="--cpp_ext" --global-option="--cuda_ext" ./
 
-WORKDIR /code/Box_Discretization_Network
+RUN git clone https://github.com/mapillary/inplace_abn.git
+ && cd inplace_abn
+ && python setup.py install
+
+WORKDIR /code
