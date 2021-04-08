@@ -46,6 +46,7 @@ RUN git clone https://github.com/cocodataset/cocoapi.git \
  && python setup.py build_ext install
 
 RUN git clone https://github.com/NVIDIA/apex \
+ && git checkout f3a960f80244cf9e80558ab30f7f7e8cbf03c0a0 \
  && cd apex \
  && pip install -v --no-cache-dir --global-option="--cpp_ext" --global-option="--cuda_ext" ./
 
