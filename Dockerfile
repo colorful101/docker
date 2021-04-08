@@ -70,7 +70,8 @@ RUN $CONDA_INSTALL \
         pytorch=1.1 cudatoolkit=9.0 -c pytorch && \
     $CONDA_INSTALL \
         ipython \
-        pillow=5.2.0 \
+        pillow=5.2.0 && \
+    $CONDA_INSTALL \
         -c menpo opencv && \
     $CONDA_INSTALL \
         torchvision=0.3.0 -c pytorch && \
